@@ -87,9 +87,10 @@ function Hero() {
                   className="
                   sm:w-[300px]
                   md:w-[360px]
-                  lg:w-[800px]
+                  lg:w-105
                   rounded-2xl
                   shadow-lg
+                
                   "
                 />
               </div>
@@ -164,9 +165,10 @@ function Hero() {
                   className="
                   sm:w-[300px]
                   md:w-[360px]
-                  lg:w-[800px]
+                  lg:w-[420px]
                   rounded-2xl
                   shadow-lg
+                  
                   "
                 />
               </div>
@@ -241,9 +243,10 @@ function Hero() {
                   className="
                   sm:w-[300px]
                   md:w-[360px]
-                  lg:w-[800px]
+                  lg:w-[420px]
                   rounded-2xl
                   shadow-lg
+                  
                   "
                 />
               </div>
