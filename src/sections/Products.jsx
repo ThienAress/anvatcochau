@@ -127,7 +127,7 @@ function Products() {
                   src={item.image}
                   className="
                   w-full
-                  h-[400px]
+                  lg:h-[400px]
                   object-cover
                   transition
                   duration-300
