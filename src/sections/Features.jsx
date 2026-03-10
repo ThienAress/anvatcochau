@@ -21,7 +21,11 @@ function Features() {
     <section className="py-20 px-4 bg-liner-to-b from-white to-orange-50">
       <div className="max-w-6xl mx-auto">
         {/* TITLE */}
-        <div className="text-center mb-16 ">
+        <div
+          className="text-center mb-16 "
+          data-aos="fade-down"
+          data-aos-delay="300"
+        >
           <h2 className="text-2xl md:text-3xl font-bold lg:text-5xl">
             Tại sao chọn chúng tôi
           </h2>
@@ -33,7 +37,11 @@ function Features() {
         </div>
 
         {/* GRID */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          data-aos="fade-up"
+          data-aos-delay="800"
+        >
           {features.map((item, index) => (
             <div
               key={index}

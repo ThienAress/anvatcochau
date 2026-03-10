@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
     "@tailwindcss/vite": "^4.2.1",
+    "aos": "^2.3.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "swiper": "^12.1.2",

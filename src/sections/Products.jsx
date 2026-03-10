@@ -1,11 +1,11 @@
-import products1 from "../assets/images/products.jpg";
-import products2 from "../assets/images/products2.jpg";
-import products3 from "../assets/images/products3.jpg";
-import products4 from "../assets/images/products4.jpg";
-import products5 from "../assets/images/products5.jpg";
-import products6 from "../assets/images/products6.jpg";
-import products7 from "../assets/images/products7.jpg";
-import products8 from "../assets/images/products8.jpg";
+import products1 from "../assets/images/products.webp";
+import products2 from "../assets/images/products2.webp";
+import products3 from "../assets/images/products3.webp";
+import products4 from "../assets/images/products4.webp";
+import products5 from "../assets/images/products5.webp";
+import products6 from "../assets/images/products6.webp";
+import products7 from "../assets/images/products7.webp";
+import products8 from "../assets/images/products8.webp";
 
 function Products() {
   const products = [
@@ -68,13 +68,20 @@ function Products() {
     },
   ];
 
+  const animations = ["flip-up", "flip-down", "flip-left", "flip-right"];
+
   return (
     <section className="py-20 px-4 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         {/* TITLE */}
 
         <div className="text-center mb-14">
-          <h2 className="text-2xl md:text-3xl font-bold">Sản phẩm nổi bật</h2>
+          <h2
+            className="text-2xl md:text-3xl font-bold lg:text-5xl"
+            data-aos="fade-down"
+          >
+            Sản phẩm nổi bật
+          </h2>
         </div>
 
         {/* GRID */}
@@ -88,9 +95,11 @@ function Products() {
         lg:grid-cols-3
         "
         >
-          {products.map((item) => (
+          {products.map((item, index) => (
             <div
               key={item.id}
+              data-aos={animations[index % animations.length]}
+              data-aos-delay={index * 400}
               className="
               group
               bg-white
@@ -125,6 +134,7 @@ function Products() {
 
                 <img
                   src={item.image}
+                  loading="lazy"
                   className="
                   w-full
                   lg:h-[400px]

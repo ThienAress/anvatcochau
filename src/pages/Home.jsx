@@ -1,17 +1,30 @@
+import { lazy } from "react";
+import { Suspense } from "react";
+import Navbar from "../components/Navbar";
 import Hero from "../sections/Hero";
-import Features from "../sections/Features";
-import Products from "../sections/Products";
-import Testimonials from "../sections/Testimonials";
-import CTA from "../sections/CTA";
+import Footer from "../components/Footer";
+
+const Features = lazy(() => import("../sections/Features"));
+const Products = lazy(() => import("../sections/Products"));
+const Testimonials = lazy(() => import("../sections/Testimonials"));
+const CTA = lazy(() => import("../sections/CTA"));
+import ScrollToTopButton from "../components/ScrollToTopButton";
+import Chaticon from "../components/ChatIcon";
 
 function Home() {
   return (
     <>
+      <Navbar />
       <Hero />
-      <Features />
-      <Products />
-      <Testimonials />
-      <CTA />
+      <Suspense fallback={<div className="py-20 text-center">Loading...</div>}>
+        <Features />
+        <Products />
+        <Testimonials />
+        <CTA />
+      </Suspense>
+      <Footer />
+      <ScrollToTopButton />
+      <Chaticon />
     </>
   );
 }

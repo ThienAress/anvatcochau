@@ -1,6 +1,6 @@
-import heroFoodImg from "../assets/images/heroImg.jpg";
-import heroFoodImg2 from "../assets/images/heroImg2.jpg";
-import heroFoodImg3 from "../assets/images/heroImg3.jpg";
+import heroFoodImg from "../assets/images/heroImg.webp";
+import heroFoodImg2 from "../assets/images/heroImg2.webp";
+import heroFoodImg3 from "../assets/images/heroImg3.webp";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
@@ -27,7 +27,11 @@ function Hero() {
           <div className="h-full flex items-center bg-orange-50">
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
               {/* TEXT */}
-              <div className="space-y-6 text-center md:text-left">
+              <div
+                className="space-y-6 text-center md:text-left"
+                data-aos="fade-right"
+                data-aos-delay="300"
+              >
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   Đồ ăn vặt{" "}
                   <span className="text-orange-500">ngon mỗi ngày</span>
@@ -80,10 +84,15 @@ function Hero() {
               </div>
 
               {/* IMAGE */}
-              <div className="flex justify-center">
+              <div
+                className="flex justify-center"
+                data-aos="fade-left"
+                data-aos-delay="800"
+              >
                 <img
                   src={heroFoodImg}
                   alt="hero food"
+                  loading="lazy"
                   className="
                   sm:w-[300px]
                   md:w-[360px]
@@ -162,6 +171,7 @@ function Hero() {
                 <img
                   src={heroFoodImg2}
                   alt="hero food"
+                  loading="lazy"
                   className="
                   sm:w-[300px]
                   md:w-[360px]
@@ -240,6 +250,7 @@ function Hero() {
                 <img
                   src={heroFoodImg3}
                   alt="hero food"
+                  loading="lazy"
                   className="
                   sm:w-[300px]
                   md:w-[360px]

@@ -35,11 +35,14 @@ function CTA() {
   }, []);
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+    <section
+      className="py-20 px-4 bg-gradient-to-r from-orange-500 to-red-500 text-white"
+      data-aos="zoom-in-up"
+    >
       <div className="max-w-5xl mx-auto text-center">
         {/* TITLE */}
 
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 lg:text-5xl">
           🔥 Đặt món ngay hôm nay
         </h2>
 

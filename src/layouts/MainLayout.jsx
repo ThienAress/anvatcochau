@@ -1,14 +1,5 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-
 function MainLayout({ children }) {
-  return (
-    <>
-      <Navbar />
-      {children}
-      <Footer />
-    </>
-  );
+  return <>{children}</>;
 }
 
 export default MainLayout;
