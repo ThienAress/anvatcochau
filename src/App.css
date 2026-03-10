@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@media (max-width: 768px) {
+  .heroSwiper .swiper-button-prev,
+  .heroSwiper .swiper-button-next {
+    display: none !important;
+  }
+}

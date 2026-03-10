@@ -9,20 +9,18 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 function Hero() {
   return (
-    <section className="w-full pb-10 ">
+    <section className="w-full min-h-[50vh] md:pt-2">
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         effect="fade"
-        loop={true}
+        loop
         autoplay={{ delay: 4000 }}
         pagination={{ clickable: true }}
-        navigation={false}
-        breakpoints={{
-          768: {
-            navigation: true,
-          },
-        }}
-        className="heroSwiper min-h-[80vh]"
+        navigation
+        grabCursor
+        allowTouchMove={true}
+        touchStartPreventDefault={false}
+        className="heroSwiper relative min-h-[70vh] md:h-[80vh]"
       >
         {/* SLIDE 1 */}
         <SwiperSlide>
@@ -30,7 +28,7 @@ function Hero() {
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
               {/* TEXT */}
               <div className="space-y-6 text-center md:text-left">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight pt-5">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   Đồ ăn vặt{" "}
                   <span className="text-orange-500">ngon mỗi ngày</span>
                 </h1>
@@ -40,8 +38,9 @@ function Hero() {
                   phút.
                 </p>
 
-                {/* BUTTON */}
+                {/* BUTTONS */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  {/* CTA PRIMARY */}
                   <button
                     className="
                     px-6 py-3
@@ -62,6 +61,7 @@ function Hero() {
                     </span>
                   </button>
 
+                  {/* CTA SECONDARY */}
                   <button
                     className="
                     px-6 py-3
@@ -84,7 +84,13 @@ function Hero() {
                 <img
                   src={heroFoodImg}
                   alt="hero food"
-                  className=" rounded-xl"
+                  className="
+                  sm:w-[300px]
+                  md:w-[360px]
+                  lg:w-[800px]
+                  rounded-2xl
+                  shadow-lg
+                  "
                 />
               </div>
             </div>
@@ -97,9 +103,11 @@ function Hero() {
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
               {/* TEXT */}
               <div className="space-y-6 text-center md:text-left">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight pt-5">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   Đồ ăn vặt{" "}
-                  <span className="text-orange-500">ngon mỗi ngày</span>
+                  <span className="text-orange-500">
+                    tươi, nhà làm chất lượng
+                  </span>
                 </h1>
 
                 <p className="text-gray-600 text-base md:text-lg">
@@ -107,8 +115,9 @@ function Hero() {
                   phút.
                 </p>
 
-                {/* BUTTON */}
+                {/* BUTTONS */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  {/* CTA PRIMARY */}
                   <button
                     className="
                     px-6 py-3
@@ -129,6 +138,7 @@ function Hero() {
                     </span>
                   </button>
 
+                  {/* CTA SECONDARY */}
                   <button
                     className="
                     px-6 py-3
@@ -151,22 +161,30 @@ function Hero() {
                 <img
                   src={heroFoodImg2}
                   alt="hero food"
-                  className=" rounded-xl"
+                  className="
+                  sm:w-[300px]
+                  md:w-[360px]
+                  lg:w-[800px]
+                  rounded-2xl
+                  shadow-lg
+                  "
                 />
               </div>
             </div>
           </div>
         </SwiperSlide>
 
-        {/* SLIDE 3 */}
+        {/* SLIDE 2 */}
         <SwiperSlide>
           <div className="h-full flex items-center bg-orange-50">
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
               {/* TEXT */}
               <div className="space-y-6 text-center md:text-left">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight pt-5">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   Đồ ăn vặt{" "}
-                  <span className="text-orange-500">ngon mỗi ngày</span>
+                  <span className="text-orange-500">
+                    ngon, không chất bảo quản, được mọi người lựa chọn
+                  </span>
                 </h1>
 
                 <p className="text-gray-600 text-base md:text-lg">
@@ -174,8 +192,9 @@ function Hero() {
                   phút.
                 </p>
 
-                {/* BUTTON */}
+                {/* BUTTONS */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  {/* CTA PRIMARY */}
                   <button
                     className="
                     px-6 py-3
@@ -196,6 +215,7 @@ function Hero() {
                     </span>
                   </button>
 
+                  {/* CTA SECONDARY */}
                   <button
                     className="
                     px-6 py-3
@@ -218,7 +238,13 @@ function Hero() {
                 <img
                   src={heroFoodImg3}
                   alt="hero food"
-                  className=" rounded-xl"
+                  className="
+                  sm:w-[300px]
+                  md:w-[360px]
+                  lg:w-[800px]
+                  rounded-2xl
+                  shadow-lg
+                  "
                 />
               </div>
             </div>
