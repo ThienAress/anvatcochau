@@ -22,7 +22,7 @@ function Search() {
           >
             <img
               src={item.images[0]}
-              className="w-full h-[140px] object-cover rounded-lg mb-3"
+              className="w-full h-35 object-cover rounded-lg mb-3"
             />
 
             <p className="text-sm font-semibold">{item.name}</p>

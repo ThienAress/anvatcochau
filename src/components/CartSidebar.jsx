@@ -1,5 +1,6 @@
 import { useCart } from "../context/CartContext";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function CartSidebar() {
   const {
@@ -26,7 +27,7 @@ function CartSidebar() {
       {isCartOpen && (
         <div
           onClick={() => setIsCartOpen(false)}
-          className="fixed inset-0 bg-black/40 z-[9998]"
+          className="fixed inset-0 bg-black/40 z-9998"
         />
       )}
 
@@ -36,10 +37,10 @@ function CartSidebar() {
       top-0
       right-0
       h-full
-      w-[350px]
+      w-87.5
       bg-white
       shadow-xl
-      z-[9999]
+      z-9999
       transition-transform
       duration-300
       ${isCartOpen ? "translate-x-0" : "translate-x-full"}
@@ -102,20 +103,23 @@ function CartSidebar() {
             <span className="text-orange-500">{total.toLocaleString()}đ</span>
           </div>
 
-          <button
+          <Link
+            to="/checkout"
             className="
-    w-full
-    bg-orange-500
-    text-white
-    py-3
-    rounded-xl
-    font-semibold
-    hover:opacity-90
-    transition
-    "
+  w-full
+  block
+  text-center
+  bg-orange-500
+  text-white
+  py-3
+  rounded-xl
+  font-semibold
+  hover:opacity-90
+  transition
+  "
           >
             Thanh toán
-          </button>
+          </Link>
         </div>
       </div>
     </>

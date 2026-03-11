@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 function Hero() {
   return (
-    <section className="w-full min-h-[50vh] md:pt-2">
+    <section className="w-full min-h-[50vh]">
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         effect="fade"

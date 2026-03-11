@@ -14,6 +14,7 @@ export const products = [
     images: [products1, products1, products1],
     rating: 4,
     price: "29.000đ",
+    category: "snack",
     sale: true,
   },
   {
@@ -22,6 +23,7 @@ export const products = [
     images: [products2, products2, products2],
     rating: 5,
     price: "18.000đ",
+    category: "snack",
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ export const products = [
     images: [products3, products2, products2],
     rating: 4,
     price: "25.000đ",
+    category: "bánh",
   },
   {
     id: 4,
@@ -36,6 +39,7 @@ export const products = [
     images: [products4, products2, products2],
     rating: 5,
     price: "35.000đ",
+    category: "nước",
   },
   {
     id: 5,
@@ -43,26 +47,30 @@ export const products = [
     images: [products5, products2, products2],
     rating: 5,
     price: "35.000đ",
+    category: "nước",
   },
   {
     id: 6,
-    name: "Trà sữa matcha",
+    name: "Trà sữa xoài",
     images: [products6, products2, products2],
     rating: 5,
     price: "35.000đ",
+    category: "nước",
   },
   {
     id: 7,
-    name: "Trà sữa matcha",
+    name: "Trà sữa trân châu đường đen",
     images: [products7, products2, products2],
     rating: 5,
     price: "35.000đ",
+    category: "nước",
   },
   {
     id: 8,
-    name: "Trà sữa matcha",
+    name: "Trà sữa Hokaido",
     images: [products8, products2, products2],
     rating: 5,
     price: "35.000đ",
+    category: "nước",
   },
 ];
