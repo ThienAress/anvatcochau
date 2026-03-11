@@ -1,73 +1,7 @@
-import products1 from "../assets/images/products.webp";
-import products2 from "../assets/images/products2.webp";
-import products3 from "../assets/images/products3.webp";
-import products4 from "../assets/images/products4.webp";
-import products5 from "../assets/images/products5.webp";
-import products6 from "../assets/images/products6.webp";
-import products7 from "../assets/images/products7.webp";
-import products8 from "../assets/images/products8.webp";
+import { Link } from "react-router-dom";
+import { products } from "../data/products";
 
 function Products() {
-  const products = [
-    {
-      id: 1,
-      name: "Chân gà tê cay Alaco loại 35g",
-      image: products1,
-      rating: 4,
-      price: "29.000đ",
-      sale: true,
-    },
-    {
-      id: 2,
-      name: "Snack khoai tây BBQ",
-      image: products2,
-      rating: 5,
-      price: "18.000đ",
-    },
-    {
-      id: 3,
-      name: "Bánh gạo Hàn Quốc",
-      image: products3,
-      rating: 4,
-      price: "25.000đ",
-    },
-    {
-      id: 4,
-      name: "Trà sữa matcha",
-      image: products4,
-      rating: 5,
-      price: "35.000đ",
-    },
-    {
-      id: 4,
-      name: "Trà sữa matcha",
-      image: products5,
-      rating: 5,
-      price: "35.000đ",
-    },
-    {
-      id: 4,
-      name: "Trà sữa matcha",
-      image: products6,
-      rating: 5,
-      price: "35.000đ",
-    },
-    {
-      id: 4,
-      name: "Trà sữa matcha",
-      image: products7,
-      rating: 5,
-      price: "35.000đ",
-    },
-    {
-      id: 4,
-      name: "Trà sữa matcha",
-      image: products8,
-      rating: 5,
-      price: "35.000đ",
-    },
-  ];
-
   const animations = ["flip-up", "flip-down", "flip-left", "flip-right"];
 
   return (
@@ -133,7 +67,7 @@ function Products() {
                 )}
 
                 <img
-                  src={item.image}
+                  src={item.images[0]}
                   loading="lazy"
                   className="
                   w-full
@@ -193,26 +127,28 @@ function Products() {
 
                 {/* BUTTON */}
 
-                <button
+                <Link
+                  to={`/product/${item.id}`}
                   className="
-                  absolute
-                  left-4
-                  right-4
-                  bottom-2
-                  border
-                  rounded-lg
-                  py-2
-                  text-sm
-                  font-medium
-                  opacity-0
-                  translate-y-3
-                  transition
-                  group-hover:opacity-100
-                  group-hover:translate-y-0
-                  "
+  absolute
+  left-4
+  right-4
+  bottom-3
+  border
+  rounded-lg
+  py-2
+  text-sm
+  font-medium
+  opacity-0
+  translate-y-3
+  transition
+  group-hover:opacity-100
+  group-hover:translate-y-0
+  text-center
+  "
                 >
                   🛒 Xem chi tiết
-                </button>
+                </Link>
               </div>
             </div>
           ))}
