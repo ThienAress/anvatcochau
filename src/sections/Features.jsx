@@ -18,7 +18,10 @@ function Features() {
   ];
 
   return (
-    <section className="py-20 px-4 bg-liner-to-b from-white to-orange-50">
+    <section
+      id="features"
+      className="py-20 px-4 bg-liner-to-b from-white to-orange-50"
+    >
       <div className="max-w-6xl mx-auto">
         {/* TITLE */}
         <div

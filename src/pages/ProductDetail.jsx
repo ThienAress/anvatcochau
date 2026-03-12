@@ -1,7 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { products } from "../data/products";
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import toast from "react-hot-toast";
 
@@ -12,6 +11,7 @@ import ScrollToTopButton from "../components/ScrollToTopButton";
 
 function ProductDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
@@ -78,6 +78,15 @@ function ProductDetail() {
         cart.classList.remove("cart-bounce");
       }, 300);
     }, 1100);
+  };
+
+  const handleBuyNow = () => {
+    addToCart({
+      ...product,
+      quantity,
+    });
+
+    navigate("/checkout");
   };
 
   useEffect(() => {
@@ -193,6 +202,7 @@ group-hover:scale-110
               </button>
 
               <button
+                onClick={handleBuyNow}
                 className="
   flex-1
   bg-orange-500
@@ -222,7 +232,7 @@ group-hover:scale-110
               >
                 <img
                   src={item.images[0]}
-                  className="w-full h-[140px] object-cover rounded-lg mb-3"
+                  className="w-full h-35 object-cover rounded-lg mb-3"
                 />
 
                 <p className="text-sm font-semibold mb-1">{item.name}</p>

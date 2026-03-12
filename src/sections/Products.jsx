@@ -31,7 +31,7 @@ function Products() {
     );
   }
   return (
-    <section className="py-20 px-4 bg-gray-50">
+    <section id="products" className="py-20 px-4 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         {/* TITLE */}
 
@@ -165,7 +165,7 @@ focus:outline-none
                   loading="lazy"
                   className="
                   w-full
-                  lg:h-[400px]
+                  lg:h-100
                   object-cover
                   transition
                   duration-300

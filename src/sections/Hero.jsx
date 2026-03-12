@@ -28,7 +28,7 @@ function Hero() {
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
               {/* TEXT */}
               <div
-                className="space-y-6 text-center md:text-left"
+                className="space-y-6 text-center md:text-left md:pt-4"
                 data-aos="fade-right"
                 data-aos-delay="300"
               >

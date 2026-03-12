@@ -10,6 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Footer from "../components/Footer";
+import toast from "react-hot-toast";
 
 function Checkout() {
   const { cartItems } = useCart();
@@ -35,6 +36,48 @@ function Checkout() {
   };
 
   const handleOrder = async () => {
+    if (cartItems.length === 0) {
+      toast.error("Giỏ hàng chưa có sản phẩm", {
+        style: {
+          borderRadius: "12px",
+          background: "#FF0000",
+          color: "#ffffff",
+          fontSize: "18px",
+          padding: "16px 24px",
+        },
+      });
+      return;
+    }
+
+    // VALIDATE FORM
+    if (!form.name.trim() || !form.phone.trim() || !form.address.trim()) {
+      toast.error("Vui lòng nhập đầy đủ họ tên, số điện thoại và địa chỉ", {
+        style: {
+          borderRadius: "12px",
+          background: "#FF0000",
+          color: "#ffffff",
+          fontSize: "18px",
+          padding: "16px 24px",
+        },
+      });
+      return;
+    }
+
+    // VALIDATE PHONE (khuyến nghị)
+    const phoneRegex = /^[0-9]{9,11}$/;
+    if (!phoneRegex.test(form.phone)) {
+      toast.error("Số điện thoại không hợp lệ", {
+        style: {
+          borderRadius: "12px",
+          background: "#FF0000",
+          color: "#ffffff",
+          fontSize: "18px",
+          padding: "16px 24px",
+        },
+      });
+      return;
+    }
+
     try {
       const orderData = {
         name: form.name,
@@ -60,14 +103,13 @@ function Checkout() {
       console.log(error);
     }
   };
-
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 ">
+      <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12 pt-12">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-linear-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
               Thanh toán đơn hàng
             </h1>
             <p className="text-gray-600 mt-3">
@@ -79,7 +121,7 @@ function Checkout() {
             {/* Form - Chiếm 2 cột */}
             <div className="lg:col-span-2">
               <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                <div className="px-8 py-6 bg-gradient-to-r from-orange-50 to-amber-50 border-b border-gray-100">
+                <div className="px-8 py-6 bg-linear-to-r from-orange-50 to-amber-50 border-b border-gray-100">
                   <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
                     <User className="w-5 h-5 text-orange-500" />
                     Thông tin giao hàng
@@ -157,7 +199,7 @@ function Checkout() {
             {/* Order Summary - Chiếm 1 cột */}
             <div className="lg:col-span-1">
               <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden sticky top-24">
-                <div className="px-6 py-5 bg-gradient-to-r from-orange-500 to-amber-500">
+                <div className="px-6 py-5 bg-linear-to-r from-orange-500 to-amber-500">
                   <h2 className="text-lg font-semibold text-white flex items-center gap-2">
                     <ShoppingBag className="w-5 h-5" />
                     Đơn hàng của bạn
@@ -219,7 +261,7 @@ function Checkout() {
                   {/* Nút đặt hàng */}
                   <button
                     onClick={handleOrder}
-                    className="w-full mt-6 bg-gradient-to-r from-orange-500 to-amber-500 text-white py-4 rounded-xl font-semibold shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-2"
+                    className="w-full mt-6 bg-linear-to-r from-orange-500 to-amber-500 text-white py-4 rounded-xl font-semibold shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-2"
                   >
                     Đặt hàng ngay
                     <ArrowRight className="w-5 h-5" />
