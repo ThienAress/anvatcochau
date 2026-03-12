@@ -24,11 +24,14 @@ import {
   Calendar,
   X,
   Eye,
+  Trash2,
 } from "lucide-react";
 
 function AdminDashboard() {
   const [orders, setOrders] = useState([]);
   const [showAllOrders, setShowAllOrders] = useState(false);
+  // State mới cho modal doanh thu theo ngày
+  const [showDailyRevenueModal, setShowDailyRevenueModal] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/orders")
@@ -99,6 +102,17 @@ function AdminDashboard() {
     return colorMap[status] || "bg-gray-100 text-gray-700";
   };
 
+  // Xóa đơn hàng
+  const deleteOrder = async (id) => {
+    if (!window.confirm("Bạn có chắc muốn xoá đơn hàng này?")) return;
+
+    await fetch(`http://localhost:5000/api/orders/${id}`, {
+      method: "DELETE",
+    });
+
+    setOrders((prev) => prev.filter((o) => o._id !== id));
+  };
+
   // Modal xem tất cả đơn hàng
   const AllOrdersModal = () => {
     if (!showAllOrders) return null;
@@ -106,12 +120,11 @@ function AdminDashboard() {
     const sortedAllOrders = [...orders].sort(
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
     );
-
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
         <div className="bg-white rounded-2xl shadow-xl w-full max-w-6xl max-h-[90vh] overflow-hidden">
           {/* Modal Header */}
-          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gradient-to-r from-orange-50 to-amber-50">
+          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-linear-to-r from-orange-50 to-amber-50">
             <div>
               <h3 className="text-xl font-semibold text-gray-900">
                 Tất cả đơn hàng
@@ -220,6 +233,106 @@ function AdminDashboard() {
                 Đóng
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Modal hiển thị doanh thu theo ngày (THÊM MỚI)
+  const DailyRevenueModal = () => {
+    if (!showDailyRevenueModal) return null;
+
+    // Tính doanh thu và số đơn theo từng ngày từ dữ liệu orders
+    const dailyData = {};
+    orders.forEach((order) => {
+      const date = new Date(order.createdAt).toLocaleDateString("vi-VN");
+      if (!dailyData[date]) {
+        dailyData[date] = { revenue: 0, count: 0 };
+      }
+      dailyData[date].revenue += order.total;
+      dailyData[date].count += 1;
+    });
+
+    // Chuyển thành mảng và sắp xếp ngày mới nhất lên đầu
+    const sortedDailyData = Object.keys(dailyData)
+      .map((date) => ({ date, ...dailyData[date] }))
+      .sort((a, b) => {
+        const [d1, m1, y1] = a.date.split("/").map(Number);
+        const [d2, m2, y2] = b.date.split("/").map(Number);
+        return new Date(y2, m2 - 1, d2) - new Date(y1, m1 - 1, d1);
+      });
+
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-hidden">
+          {/* Header */}
+          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-linear-to-r from-orange-50 to-amber-50">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">
+                Doanh thu theo ngày
+              </h3>
+              <p className="text-sm text-gray-600 mt-1">
+                Chi tiết doanh thu và số đơn từng ngày
+              </p>
+            </div>
+            <button
+              onClick={() => setShowDailyRevenueModal(false)}
+              className="p-2 hover:bg-white rounded-lg transition"
+            >
+              <X className="w-5 h-5 text-gray-600" />
+            </button>
+          </div>
+
+          {/* Bảng dữ liệu */}
+          <div className="overflow-y-auto max-h-[calc(90vh-120px)] p-6">
+            <table className="w-full">
+              <thead className="bg-gray-50 sticky top-0">
+                <tr>
+                  <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 uppercase">
+                    Ngày
+                  </th>
+                  <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 uppercase">
+                    Số đơn
+                  </th>
+                  <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 uppercase">
+                    Doanh thu
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {sortedDailyData.map((item) => (
+                  <tr key={item.date} className="hover:bg-gray-50">
+                    <td className="py-3 px-4 font-medium">{item.date}</td>
+                    <td className="py-3 px-4">{item.count}</td>
+                    <td className="py-3 px-4 font-semibold text-orange-600">
+                      {item.revenue.toLocaleString()}đ
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {sortedDailyData.length === 0 && (
+              <div className="text-center py-12 text-gray-500">
+                Chưa có dữ liệu
+              </div>
+            )}
+          </div>
+
+          {/* Footer */}
+          <div className="px-6 py-4 border-t border-gray-100 bg-gray-50 flex justify-between items-center">
+            <div className="text-sm text-gray-600">
+              <span className="font-medium">Tổng doanh thu:</span>
+              <span className="ml-2 font-bold text-orange-600">
+                {totalRevenue.toLocaleString()}đ
+              </span>
+            </div>
+            <button
+              onClick={() => setShowDailyRevenueModal(false)}
+              className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+            >
+              Đóng
+            </button>
           </div>
         </div>
       </div>
@@ -355,11 +468,21 @@ function AdminDashboard() {
                   Biến động doanh thu 7 ngày gần nhất
                 </p>
               </div>
-              <select className="px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500">
-                <option>7 ngày qua</option>
-                <option>30 ngày qua</option>
-                <option>3 tháng qua</option>
-              </select>
+              {/* THÊM NÚT XEM TỪNG NGÀY BÊN CẠNH DROPDOWN */}
+              <div className="flex items-center gap-2">
+                <select className="px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                  <option>7 ngày qua</option>
+                  <option>30 ngày qua</option>
+                  <option>3 tháng qua</option>
+                </select>
+                <button
+                  onClick={() => setShowDailyRevenueModal(true)}
+                  className="px-3 py-1.5 bg-orange-50 text-orange-600 rounded-lg text-sm hover:bg-orange-100 transition flex items-center gap-1"
+                >
+                  <Calendar className="w-4 h-4" />
+                  Xem từng ngày
+                </button>
+              </div>
             </div>
 
             <div className="h-80">
@@ -545,6 +668,18 @@ function AdminDashboard() {
                         {new Date(order.createdAt).toLocaleDateString("vi-VN")}
                       </p>
                     </td>
+
+                    <td className="py-4">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          deleteOrder(order._id);
+                        }}
+                        className="p-2 rounded-lg hover:bg-red-50 text-red-500 transition"
+                      >
+                        <Trash2 size={18} />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -561,6 +696,8 @@ function AdminDashboard() {
 
       {/* Modal hiển thị tất cả đơn hàng */}
       <AllOrdersModal />
+      {/* Modal hiển thị doanh thu theo ngày */}
+      <DailyRevenueModal />
     </div>
   );
 }
