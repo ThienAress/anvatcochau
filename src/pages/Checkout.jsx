@@ -89,7 +89,7 @@ function Checkout() {
       };
 
       const res = await fetch(
-        "https://anvatcochau-backend.onrender.com/:5000/api/orders",
+        "https://anvatcochau-backend.onrender.com/api/orders",
         {
           method: "POST",
           headers: {
