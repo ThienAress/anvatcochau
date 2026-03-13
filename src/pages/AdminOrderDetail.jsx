@@ -21,7 +21,7 @@ function AdminOrderDetail() {
   const [order, setOrder] = useState(null);
 
   useEffect(() => {
-    fetch(`https://anvatcochau-backend.onrender.com//api/orders/${id}`)
+    fetch(`https://anvatcochau-backend.onrender.com/api/orders/${id}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [id]);

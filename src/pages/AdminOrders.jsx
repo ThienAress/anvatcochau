@@ -28,7 +28,7 @@ function AdminOrders() {
 
   useEffect(() => {
     const fetchOrders = () => {
-      fetch("https://anvatcochau-backend.onrender.com//api/orders")
+      fetch("https://anvatcochau-backend.onrender.com/api/orders")
         .then((res) => res.json())
         .then((data) => {
           if (lastOrderCount !== 0 && data.length > lastOrderCount) {
@@ -306,7 +306,7 @@ function AdminOrders() {
                                 e.stopPropagation();
                                 if (window.confirm("Xác nhận đơn hàng này?")) {
                                   await fetch(
-                                    `https://anvatcochau-backend.onrender.com//api/orders/${order._id}/confirm`,
+                                    `https://anvatcochau-backend.onrender.com/api/orders/${order._id}/confirm`,
                                     { method: "PUT" },
                                   );
                                   window.location.reload();
@@ -330,7 +330,7 @@ function AdminOrders() {
                                   )
                                 ) {
                                   await fetch(
-                                    `https://anvatcochau-backend.onrender.com//api/orders/${order._id}/complete`,
+                                    `https://anvatcochau-backend.onrender.com/api/orders/${order._id}/complete`,
                                     { method: "PUT" },
                                   );
                                   window.location.reload();
@@ -355,7 +355,7 @@ function AdminOrders() {
                                   )
                                 ) {
                                   await fetch(
-                                    `https://anvatcochau-backend.onrender.com//api/orders/${order._id}/cancel`,
+                                    `https://anvatcochau-backend.onrender.com/api/orders/${order._id}/cancel`,
                                     { method: "PUT" },
                                   );
                                   window.location.reload();

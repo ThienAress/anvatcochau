@@ -18,7 +18,7 @@ function AdminProducts() {
   ------------------------- */
 
   const fetchProducts = () => {
-    fetch("https://anvatcochau-backend.onrender.com//api/products")
+    fetch("https://anvatcochau-backend.onrender.com/api/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   };
@@ -50,7 +50,7 @@ function AdminProducts() {
       formData.append("image", imageFile);
 
       const uploadRes = await fetch(
-        "https://anvatcochau-backend.onrender.com//api/upload",
+        "https://anvatcochau-backend.onrender.com/api/upload",
         {
           method: "POST",
           body: formData,
@@ -62,7 +62,7 @@ function AdminProducts() {
       imageUrl = uploadData.imageUrl;
     }
 
-    await fetch("https://anvatcochau-backend.onrender.com//api/products", {
+    await fetch("https://anvatcochau-backend.onrender.com/api/products", {
       method: "POST",
 
       headers: {
@@ -91,7 +91,7 @@ function AdminProducts() {
 
   const handleUpdate = async () => {
     await fetch(
-      `https://anvatcochau-backend.onrender.com//api/products/${editingId}`,
+      `https://anvatcochau-backend.onrender.com/api/products/${editingId}`,
       {
         method: "PUT",
 
@@ -122,7 +122,7 @@ function AdminProducts() {
   const handleDelete = async (id) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
       await fetch(
-        `https://anvatcochau-backend.onrender.com//api/products/${id}`,
+        `https://anvatcochau-backend.onrender.com/api/products/${id}`,
         {
           method: "DELETE",
         },
