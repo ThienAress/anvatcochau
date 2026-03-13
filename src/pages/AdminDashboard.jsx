@@ -34,7 +34,7 @@ function AdminDashboard() {
   const [showDailyRevenueModal, setShowDailyRevenueModal] = useState(false);
 
   useEffect(() => {
-    fetch("https://anvatcochau-backend.onrender.com//api/orders")
+    fetch("https://anvatcochau-backend.onrender.com/api/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
