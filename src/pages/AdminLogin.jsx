@@ -19,7 +19,7 @@ function AdminLogin() {
 
   const handleLogin = async () => {
     const res = await fetch(
-      "https://anvatcochau-backend.onrender.com//api/admin/login",
+      "https://anvatcochau-backend.onrender.com/api/admin/login",
       {
         method: "POST",
         headers: {

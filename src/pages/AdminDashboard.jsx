@@ -106,7 +106,7 @@ function AdminDashboard() {
   const deleteOrder = async (id) => {
     if (!window.confirm("Bạn có chắc muốn xoá đơn hàng này?")) return;
 
-    await fetch(`https://anvatcochau-backend.onrender.com//api/orders/${id}`, {
+    await fetch(`https://anvatcochau-backend.onrender.com/api/orders/${id}`, {
       method: "DELETE",
     });
 
