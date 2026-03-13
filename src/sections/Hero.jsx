@@ -3,11 +3,14 @@ import heroFoodImg2 from "../assets/images/heroImg2.webp";
 import heroFoodImg3 from "../assets/images/heroImg3.webp";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
+import { useNavigate } from "react-router-dom";
+import { products } from "../data/products";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 function Hero() {
+  const navigate = useNavigate();
   return (
     <section className="w-full min-h-[50vh]">
       <Swiper
@@ -46,6 +49,7 @@ function Hero() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                   {/* CTA PRIMARY */}
                   <button
+                    onClick={() => navigate(`/product/${products[0].id}`)}
                     className="
                     px-6 py-3
                     rounded-lg
@@ -67,6 +71,12 @@ function Hero() {
 
                   {/* CTA SECONDARY */}
                   <button
+                    onClick={() => {
+                      const section = document.getElementById("products");
+                      if (section) {
+                        section.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
                     className="
                     px-6 py-3
                     rounded-lg
@@ -94,8 +104,8 @@ function Hero() {
                   alt="hero food"
                   loading="lazy"
                   className="
-                  sm:w-[300px]
-                  md:w-[360px]
+                  sm:w-75
+                  md:w-90
                   lg:w-105
                   rounded-2xl
                   shadow-lg
@@ -129,6 +139,7 @@ function Hero() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                   {/* CTA PRIMARY */}
                   <button
+                    onClick={() => navigate(`/product/${products[0].id}`)}
                     className="
                     px-6 py-3
                     rounded-lg
@@ -150,6 +161,12 @@ function Hero() {
 
                   {/* CTA SECONDARY */}
                   <button
+                    onClick={() => {
+                      const section = document.getElementById("products");
+                      if (section) {
+                        section.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
                     className="
                     px-6 py-3
                     rounded-lg
@@ -173,9 +190,9 @@ function Hero() {
                   alt="hero food"
                   loading="lazy"
                   className="
-                  sm:w-[300px]
-                  md:w-[360px]
-                  lg:w-[420px]
+                  sm:w-75
+                  md:w-90
+                  lg:w-105
                   rounded-2xl
                   shadow-lg
                   
@@ -208,6 +225,7 @@ function Hero() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                   {/* CTA PRIMARY */}
                   <button
+                    onClick={() => navigate(`/product/${products[0].id}`)}
                     className="
                     px-6 py-3
                     rounded-lg
@@ -229,6 +247,12 @@ function Hero() {
 
                   {/* CTA SECONDARY */}
                   <button
+                    onClick={() => {
+                      const section = document.getElementById("products");
+                      if (section) {
+                        section.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
                     className="
                     px-6 py-3
                     rounded-lg
@@ -252,9 +276,9 @@ function Hero() {
                   alt="hero food"
                   loading="lazy"
                   className="
-                  sm:w-[300px]
-                  md:w-[360px]
-                  lg:w-[420px]
+                 sm:w-75
+                  md:w-90
+                  lg:w-105
                   rounded-2xl
                   shadow-lg
                   

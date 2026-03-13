@@ -143,7 +143,7 @@ function AdminOrders() {
         {/* Notification */}
         {showNotification && (
           <div className="mb-6 animate-slide-down">
-            <div className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3">
+            <div className="bg-linear-to-r from-orange-500 to-amber-500 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3">
               <AlertCircle className="w-5 h-5" />
               <span className="font-medium">{notificationMessage}</span>
               <button
@@ -192,7 +192,7 @@ function AdminOrders() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
+                <tr className="bg-linear-to-r from-gray-50 to-gray-100 border-b border-gray-200">
                   <th className="text-left px-6 py-4 text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Mã đơn
                   </th>

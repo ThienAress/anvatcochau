@@ -23,6 +23,15 @@ function Navbar() {
     p.name.toLowerCase().includes(search.toLowerCase()),
   );
 
+  // ==================== GIẢI PHÁP ====================
+  // Tự động đóng sidebar giỏ hàng khi chuyển sang trang checkout
+  useEffect(() => {
+    if (location.pathname === "/checkout") {
+      setIsCartOpen(false);
+    }
+  }, [location, setIsCartOpen]);
+  // ===================================================
+
   const handleMenuClick = (item) => {
     if (item === "Trang chủ") {
       navigate("/");
@@ -71,14 +80,10 @@ function Navbar() {
   // Khóa Scroll Modal Liên Hệ
   useEffect(() => {
     if (showContactModal) {
-      // Khóa scroll body
       document.body.style.overflow = "hidden";
     } else {
-      // Mở lại scroll khi đóng modal
       document.body.style.overflow = "";
     }
-
-    // Cleanup khi component unmount hoặc modal thay đổi
     return () => {
       document.body.style.overflow = "";
     };
@@ -96,7 +101,7 @@ function Navbar() {
 
     return (
       <div
-        className="fixed inset-0 bg-black/45 flex items-center justify-center z-50 p-4" // giữ nền mờ
+        className="fixed inset-0 bg-black/45 flex items-center justify-center z-50 p-4"
         onClick={handleOverlayClick}
       >
         <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
