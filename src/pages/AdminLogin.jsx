@@ -98,7 +98,7 @@ function AdminLogin() {
             {/* Login Button */}
             <button
               onClick={handleLogin}
-              className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white py-3.5 rounded-xl font-semibold shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-2"
+              className="w-full bg-linear-to-r from-orange-500 to-amber-500 text-white py-3.5 rounded-xl font-semibold shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-2"
             >
               <LogIn className="w-5 h-5" />
               Đăng nhập

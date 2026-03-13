@@ -21,7 +21,7 @@ function AdminOrderDetail() {
   const [order, setOrder] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/orders/${id}`)
+    fetch(`https://anvatcochau-backend.onrender.com//api/orders/${id}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [id]);
@@ -124,7 +124,7 @@ function AdminOrderDetail() {
           <div className="lg:col-span-2 space-y-6">
             {/* Thông tin sản phẩm */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="px-6 py-4 bg-gradient-to-r from-orange-50 to-amber-50 border-b border-gray-100">
+              <div className="px-6 py-4 bg-linear-to-r from-orange-50 to-amber-50 border-b border-gray-100">
                 <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
                   <Package className="w-5 h-5 text-orange-500" />
                   Sản phẩm đã đặt
@@ -218,7 +218,7 @@ function AdminOrderDetail() {
           <div className="space-y-6">
             {/* Thông tin khách hàng */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="px-6 py-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100">
+              <div className="px-6 py-4 bg-linear-to-r from-blue-50 to-indigo-50 border-b border-gray-100">
                 <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
                   <User className="w-5 h-5 text-blue-500" />
                   Thông tin khách hàng
@@ -276,7 +276,7 @@ function AdminOrderDetail() {
 
             {/* Thông tin đơn hàng */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="px-6 py-4 bg-gradient-to-r from-purple-50 to-pink-50 border-b border-gray-100">
+              <div className="px-6 py-4 bg-linear-to-r from-purple-50 to-pink-50 border-b border-gray-100">
                 <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
                   <CreditCard className="w-5 h-5 text-purple-500" />
                   Thông tin đơn hàng
@@ -344,7 +344,7 @@ function AdminOrderDetail() {
             {/* Ghi chú đơn hàng (nếu có) */}
             {order.note && (
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                <div className="px-6 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-100">
+                <div className="px-6 py-4 bg-linear-to-r from-gray-50 to-gray-100 border-b border-gray-100">
                   <h2 className="text-lg font-semibold text-gray-800">
                     Ghi chú
                   </h2>

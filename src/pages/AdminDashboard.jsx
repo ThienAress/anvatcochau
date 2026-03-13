@@ -34,7 +34,7 @@ function AdminDashboard() {
   const [showDailyRevenueModal, setShowDailyRevenueModal] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/orders")
+    fetch("https://anvatcochau-backend.onrender.com//api/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
@@ -106,7 +106,7 @@ function AdminDashboard() {
   const deleteOrder = async (id) => {
     if (!window.confirm("Bạn có chắc muốn xoá đơn hàng này?")) return;
 
-    await fetch(`http://localhost:5000/api/orders/${id}`, {
+    await fetch(`https://anvatcochau-backend.onrender.com//api/orders/${id}`, {
       method: "DELETE",
     });
 

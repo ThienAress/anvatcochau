@@ -15,6 +15,8 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const isAdmin = localStorage.getItem("adminToken");
+
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const filteredProducts = products.filter((p) =>
@@ -225,6 +227,15 @@ function Navbar() {
                 {item}
               </li>
             ))}
+
+            {isAdmin && (
+              <li
+                onClick={() => navigate("/admin/dashboard")}
+                className="cursor-pointer hover:text-orange-500 transition font-semibold"
+              >
+                Dashboard
+              </li>
+            )}
           </ul>
 
           {/* CART */}
@@ -274,6 +285,17 @@ function Navbar() {
                 {item}
               </div>
             ))}
+            {isAdmin && (
+              <div
+                onClick={() => {
+                  navigate("/admin/dashboard");
+                  setOpen(false);
+                }}
+                className="py-2 cursor-pointer font-semibold"
+              >
+                Dashboard
+              </div>
+            )}
           </div>
         </div>
       </div>

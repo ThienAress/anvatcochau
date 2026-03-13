@@ -18,7 +18,7 @@ function AdminProducts() {
   ------------------------- */
 
   const fetchProducts = () => {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://anvatcochau-backend.onrender.com//api/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   };
@@ -49,17 +49,20 @@ function AdminProducts() {
       const formData = new FormData();
       formData.append("image", imageFile);
 
-      const uploadRes = await fetch("http://localhost:5000/api/upload", {
-        method: "POST",
-        body: formData,
-      });
+      const uploadRes = await fetch(
+        "https://anvatcochau-backend.onrender.com//api/upload",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
 
       const uploadData = await uploadRes.json();
 
       imageUrl = uploadData.imageUrl;
     }
 
-    await fetch("http://localhost:5000/api/products", {
+    await fetch("https://anvatcochau-backend.onrender.com//api/products", {
       method: "POST",
 
       headers: {
@@ -87,15 +90,18 @@ function AdminProducts() {
   };
 
   const handleUpdate = async () => {
-    await fetch(`http://localhost:5000/api/products/${editingId}`, {
-      method: "PUT",
+    await fetch(
+      `https://anvatcochau-backend.onrender.com//api/products/${editingId}`,
+      {
+        method: "PUT",
 
-      headers: {
-        "Content-Type": "application/json",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(form),
       },
-
-      body: JSON.stringify(form),
-    });
+    );
 
     setEditingId(null);
 
@@ -115,9 +121,12 @@ function AdminProducts() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
-      await fetch(`http://localhost:5000/api/products/${id}`, {
-        method: "DELETE",
-      });
+      await fetch(
+        `https://anvatcochau-backend.onrender.com//api/products/${id}`,
+        {
+          method: "DELETE",
+        },
+      );
       fetchProducts();
     }
   };
